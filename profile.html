@@ -1,302 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BloodPlus – Profile</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BloodPlus | Profile</title>
 
-<style>
-    :root {
-        --navy: rgba(33,49,129,1);
-        --accent: #c62828;
-        --card: #ffffff;
-        --bg: #f4f6ff;
-        --text: #0f1724;
-        --muted: #64748b;
-        --shadow: 0 8px 20px rgba(14, 24, 63, 0.12);
-        font-family: "Inter", system-ui, sans-serif;
-    }
+    <!-- INTERNAL CSS -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Poppins", sans-serif;
+            background-color: #fff7f7;
+        }
 
-    body {
-        margin: 0;
-        background: var(--bg);
-        padding: 30px;
-        color: var(--text);
-    }
+        /* NAVBAR (synced with original website) */
+        .navbar {
+            width: 100%;
+            background-color: #b30000;
+            padding: 15px 0;
+            display: flex;
+            justify-content: center;
+        }
 
-    /* Header */
-    header {
-        max-width: 1100px;
-        margin: auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
+        .nav-container {
+            width: 90%;
+            max-width: 1200px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    .brand {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-    }
+        .logo {
+            font-size: 26px;
+            color: #ffffff;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
 
-    .logo {
-        width: 46px;
-        height: 46px;
-        border-radius: 10px;
-        background: linear-gradient(135deg, var(--accent), var(--navy));
-        color: #fff;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 700;
-        font-size: 18px;
-    }
+        .nav-links a {
+            color: #ffffff;
+            margin-left: 25px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: 0.2s ease-in-out;
+        }
 
-    nav a {
-        margin-left: 16px;
-        text-decoration: none;
-        color: var(--navy);
-        font-weight: 600;
-        padding: 8px 12px;
-        border-radius: 8px;
-    }
+        .nav-links a:hover {
+            color: #ffcccc;
+        }
 
-    nav a.c {
-        background: var(--accent);
-        color: #fff;
-    }
+        /* PROFILE SECTION */
+        .profile-container {
+            width: 90%;
+            max-width: 900px;
+            margin: 40px auto;
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
 
-    /* Main layout */
-    .container {
-        max-width: 1100px;
-        margin: 30px auto;
-        display: grid;
-        grid-template-columns: 330px 1fr;
-        gap: 24px;
-    }
+        .profile-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
 
-    .card {
-        background: var(--card);
-        padding: 20px;
-        border-radius: 14px;
-        box-shadow: var(--shadow);
-    }
+        .profile-header h2 {
+            color: #b30000;
+            font-size: 32px;
+            font-weight: 600;
+        }
 
-    /* PROFILE SIDEBAR */
-    .avatar {
-        width: 95px;
-        height: 95px;
-        border-radius: 14px;
-        background: linear-gradient(180deg, var(--navy), #2e3aa8);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 32px;
-        color: #fff;
-        font-weight: bold;
-        margin-bottom: 10px;
-    }
+        .profile-card {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
 
-    .profile-info h2 {
-        margin: 5px 0;
-        color: var(--navy);
-    }
+        .box {
+            width: 250px;
+            background: #fff5f5;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #ffcccc;
+            text-align: center;
+            transition: 0.3s ease;
+        }
 
-    .profile-info p {
-        margin: 4px 0;
-        color: var(--muted);
-        font-size: 14px;
-    }
+        .box:hover {
+            transform: translateY(-5px);
+            background: #ffe5e5;
+        }
 
-    .stats {
-        margin-top: 16px;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-    }
+        .box-title {
+            font-size: 16px;
+            color: #b30000;
+            font-weight: 600;
+        }
 
-    .stats div {
-        background: #eef1ff;
-        padding: 10px;
-        border-radius: 10px;
-        text-align: center;
-    }
+        .box-value {
+            margin-top: 8px;
+            font-size: 20px;
+            font-weight: 700;
+            color: #333;
+        }
 
-    .stats .num {
-        font-weight: 700;
-        color: var(--navy);
-        font-size: 20px;
-    }
+        /* TITLES SECTION */
+        .titles-section {
+            margin-top: 40px;
+            padding: 20px;
+            background: #fff5f5;
+            border-radius: 10px;
+            border: 1px solid #ffcccc;
+        }
 
-    .blood {
-        display: inline-block;
-        margin-top: 14px;
-        padding: 10px 18px;
-        background: linear-gradient(90deg, var(--accent), #ef5350);
-        color: #fff;
-        font-size: 15px;
-        border-radius: 20px;
-        font-weight: 700;
-    }
+        .titles-section h3 {
+            color: #b30000;
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
 
-    .titles span {
-        display: inline-block;
-        background: #f2f3ff;
-        border-radius: 10px;
-        padding: 8px 12px;
-        margin: 4px;
-        font-weight: 600;
-        color: #1e2d6b;
-        font-size: 13px;
-    }
+        .title-tag {
+            display: inline-block;
+            background: #b30000;
+            color: #ffffff;
+            padding: 8px 14px;
+            border-radius: 20px;
+            margin: 5px;
+            font-size: 14px;
+            font-weight: 500;
+        }
 
-    /* RIGHT SIDE */
-    h3 {
-        margin-top: 0;
-        color: var(--navy);
-        border-bottom: 1px dashed #ddd;
-        padding-bottom: 6px;
-    }
-
-    .fields {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 14px;
-    }
-
-    .field label {
-        font-size: 13px;
-        color: #475569;
-        font-weight: 600;
-    }
-
-    .field div {
-        margin-top: 5px;
-        padding: 10px;
-        background: #f8f9ff;
-        border-radius: 10px;
-        font-weight: 600;
-        color: var(--text);
-    }
-
-    .history-item {
-        padding: 10px 0;
-        border-bottom: 1px dashed #dadcea;
-        display: flex;
-        justify-content: space-between;
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 900px) {
-        .container { grid-template-columns: 1fr; }
-    }
-</style>
-
+        /* FOOTER */
+        .footer {
+            background-color: #b30000;
+            color: #ffffff;
+            text-align: center;
+            padding: 15px;
+            margin-top: 40px;
+        }
+    </style>
 </head>
 <body>
 
-<header>
-    <div class="brand">
-        <div class="logo">BP</div>
-        <div>
-            <h2 style="margin:0;color:var(--navy)">BloodPlus</h2>
-            <p style="margin:0;color:var(--muted);font-size:13px">Donate • Request • Save Lives</p>
+    <!-- NAVBAR -->
+    <div class="navbar">
+        <div class="nav-container">
+            <div class="logo">BloodPlus</div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="donate.html">Donate</a>
+                <a href="request.html">Request</a>
+                <a href="about.html">About</a>
+                <a href="profile.html" style="font-weight:700; color:#ffcccc;">Profile</a>
+            </div>
         </div>
     </div>
 
-    <nav>
-        <a href="#">Home</a>
-        <a href="#">Donate</a>
-        <a href="#" class="c">Rewards</a>
-    </nav>
-</header>
-
-<div class="container">
-
-    <!-- LEFT SIDEBAR -->
-    <div class="card">
-        <div class="avatar">AS</div>
-
-        <div class="profile-info">
-            <h2>Aprajit Sinha</h2>
-            <p>Registered Donor</p>
-            <p>Member since 2024</p>
+    <!-- PROFILE CONTAINER -->
+    <div class="profile-container">
+        <div class="profile-header">
+            <h2>User Profile</h2>
         </div>
 
-        <div class="blood">O+ • Eligible to donate</div>
+        <div class="profile-card">
+            <div class="box">
+                <div class="box-title">Date of Birth</div>
+                <div class="box-value">12 March 2004</div>
+            </div>
 
-        <div class="stats">
-            <div>
-                <div class="num">3</div>
-                <div>Donations</div>
+            <div class="box">
+                <div class="box-title">Blood Group</div>
+                <div class="box-value">A+</div>
             </div>
-            <div>
-                <div class="num">150</div>
-                <div>Reward Points</div>
+
+            <div class="box">
+                <div class="box-title">Total Donations</div>
+                <div class="box-value">07</div>
             </div>
-            <div>
-                <div class="num">27</div>
-                <div>Age</div>
-            </div>
-            <div>
-                <div class="num">12 Oct 2025</div>
-                <div>Last Donation</div>
+
+            <div class="box">
+                <div class="box-title">Reward Points</div>
+                <div class="box-value">430</div>
             </div>
         </div>
 
-        <h3 style="margin-top:20px;font-size:16px;">Earned Titles</h3>
-        <div class="titles">
-            <span>Rookie Donor</span>
-            <span>Active Volunteer</span>
+        <!-- TITLE BADGES -->
+        <div class="titles-section">
+            <h3>Earned Titles</h3>
+
+            <span class="title-tag">🌟 Bronze Donor</span>
+            <span class="title-tag">🏅 Consistent Contributor</span>
+            <span class="title-tag">❤️ Life Saver</span>
         </div>
+
     </div>
 
-    <!-- RIGHT SIDE -->
-    <div class="card">
-        <h3>Profile Details</h3>
-
-        <div class="fields">
-            <div class="field">
-                <label>Full Name</label>
-                <div>Aprajit Sinha</div>
-            </div>
-            <div class="field">
-                <label>Date of Birth</label>
-                <div>15 June 1998</div>
-            </div>
-            <div class="field">
-                <label>Blood Group</label>
-                <div>O+</div>
-            </div>
-            <div class="field">
-                <label>Contact</label>
-                <div>+91 98765 43210</div>
-            </div>
-            <div class="field" style="grid-column: 1 / -1;">
-                <label>About</label>
-                <div>A dedicated student and volunteer who donates blood regularly to help patients in need.</div>
-            </div>
-        </div>
-
-        <h3 style="margin-top:25px;">Donation History</h3>
-
-        <div class="history-item">
-            <span><strong>City Blood Bank</strong><br><small>12 Oct 2025</small></span>
-            <span>+50 pts</span>
-        </div>
-
-        <div class="history-item">
-            <span><strong>Campus Drive</strong><br><small>1 Jun 2025</small></span>
-            <span>+50 pts</span>
-        </div>
-
-        <div class="history-item">
-            <span><strong>Community Camp</strong><br><small>8 Dec 2024</small></span>
-            <span>+50 pts</span>
-        </div>
+    <!-- FOOTER -->
+    <div class="footer">
+        © 2025 BloodPlus | All Rights Reserved
     </div>
-
-</div>
 
 </body>
 </html>
