@@ -15,7 +15,7 @@ img {
 }
 
 #about_img img {
-    height: 5%;
+    height: 50px;
 }
 body {
     font-family: Arial, sans-serif;
@@ -231,6 +231,7 @@ footer {
     }
 
 }
+
 
 
 
