@@ -14,7 +14,7 @@ img {
     height: auto;
 }
 
-#about_img {
+#about_img img {
     height: 5%;
 }
 body {
@@ -231,5 +231,6 @@ footer {
     }
 
 }
+
 
 
