@@ -14,9 +14,8 @@ img {
     height: auto;
 }
 
-#about_img{
+#about_img {
     height: 5%;
-    display: block;
 }
 body {
     font-family: Arial, sans-serif;
@@ -232,4 +231,5 @@ footer {
     }
 
 }
+
 
